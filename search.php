@@ -12,9 +12,9 @@
 	} 
 	else
 	{
-		$stmt = $conn->prepare("select Name from Colors where Name like ? and UserID=?");
-		$colorName = "%" . $inData["search"] . "%";
-		$stmt->bind_param("ss", $colorName, $inData["userId"]);
+		$stmt = $conn->prepare("select * from Users where Name like ? and UserID=?");
+		$searchItem = "%" . $inData["search"] . "%";
+		$stmt->bind_param("ss", $searchItem, $inData["userId"]);
 		$stmt->execute();
 		
 		$result = $stmt->get_result();
@@ -26,7 +26,7 @@
 				$searchResults .= ",";
 			}
 			$searchCount++;
-			$searchResults .= '"' . $row["Name"] . '"';
+			$searchResults .= '"' . $row["FirstName"] . ' | ' $row["LastName"] . ' | ' . $row["PhoneNumber"] . ' | ' . $row["EmailAddress"] . ' | ' . $row["UserID"] . '"';
 		}
 		
 		if( $searchCount == 0 )
