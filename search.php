@@ -14,7 +14,7 @@
 	{
 		$stmt = $conn->prepare("select * from Users where Name like ? and UserID=?");
 		$searchItem = "%" . $inData["search"] . "%";
-		$stmt->bind_param("ss", $searchItem, $inData["userId"]);
+		$stmt->bind_param("ss", $searchItem, $inData["UserId"]);
 		$stmt->execute();
 		
 		$result = $stmt->get_result();
