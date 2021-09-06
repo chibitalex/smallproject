@@ -12,7 +12,7 @@
 	} 
 	else
 	{
-		$stmt = $conn->prepare("select * from Users where Name like ? and UserID=?");
+		$stmt = $conn->prepare("SELECT * FROM Users where FirstName like ? or LastName like ? or PhoneNumber like ? or Email like ? and UserID=?");
 		$searchItem = "%" . $inData["search"] . "%";
 		$stmt->bind_param("ss", $searchItem, $inData["UserId"]);
 		$stmt->execute();
