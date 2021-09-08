@@ -17,9 +17,16 @@
 		$LastName = $inData["LastName"];
 		$PhoneNumber = $inData["PhoneNumber"];
 		$Email = $inData["Email"];
+		
+		$stmt = $conn->prepare("UPDATE Contacts SET FirstName = 'FirstName', LastName = 'LastName', PhoneNumber = 'PhoneNumber', Email = 'Email' WHERE UserID=?");
+		
+		if(!$FirstName || !$LastName || !$PhoneNumber || !$Email)
+			echo "Sorry, all fields are required."
 	
-	
-	
+		else
+			$stmt->execute();
+			echo "Contact updated!"
+		}
 	
 function getRequestInfo()
 	{
