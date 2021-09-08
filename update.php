@@ -12,6 +12,9 @@
 	} 
 	else
 	{ 
+		
+		$inData = getRequestInfo();
+
 	   // user to provide data to update
 		$FirstName = $inData["FirstName"];
 		$LastName = $inData["LastName"];
