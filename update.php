@@ -1,9 +1,6 @@
 <?php
 
 	$inData = getRequestInfo();
-	
-	$searchResults = "";
-	$searchCount = 0;
 
 	$conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331");
 	if ($conn->connect_error) 
@@ -11,9 +8,7 @@
 		returnWithError( $conn->connect_error );
 	} 
 	else
-	{ 
-		
-		$inData = getRequestInfo();
+	{
 
 	   // user to provide data to update
 		$FirstName = $inData["FirstName"];
@@ -26,10 +21,15 @@
 		if(!$FirstName || !$LastName || !$PhoneNumber || !$Email)
 			echo "Sorry, all fields are required."
 	
-		else
+		else{
 			$stmt->execute();
 			echo "Contact updated!"
-		}
+			}
+		$stmt->close;
+	}
+
+	$conn->close;
+
 	
 function getRequestInfo()
 	{
