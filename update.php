@@ -9,23 +9,23 @@
 	} 
 	else
 	{
-
 	   // user to provide data to update
 		$FirstName = $inData["FirstName"];
 		$LastName = $inData["LastName"];
 		$PhoneNumber = $inData["PhoneNumber"];
 		$Email = $inData["Email"];
 		
+		if(!$FirstName || !$LastName || !$PhoneNumber || !$Email){
+			echo "Sorry, all fields are required.";
+		}
+		
 		$stmt = $conn->prepare("UPDATE Contacts SET FirstName = 'FirstName', LastName = 'LastName', PhoneNumber = 'PhoneNumber', Email = 'Email' WHERE UserID=?");
 		
-		if(!$FirstName || !$LastName || !$PhoneNumber || !$Email)
-			echo "Sorry, all fields are required."
-	
-		else{
-			$stmt->execute();
-			echo "Contact updated!"
-			}
-		$stmt->close;
+		$stmt->execute();
+		
+		if
+		echo "Contact updated!"
+		
 	}
 
 	$conn->close;
